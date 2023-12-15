@@ -15,5 +15,7 @@ namespace Updater.Models
 		public string ProxyUserName { get; set; }
 		public string ProxyPassword { get; set; }
 		public string UpdateMode { get; set; }
+
+		public string UpdateDate { get; set; }
 	}
 }
