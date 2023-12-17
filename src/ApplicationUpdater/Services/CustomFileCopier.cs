@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Updater
+namespace ApplicationUpdater
 {
     public delegate void ProgressChangeDelegate(double Persentage, ref bool Cancel);
     public delegate void Completedelegate();

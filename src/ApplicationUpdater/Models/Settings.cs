@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Updater.Models
+namespace ApplicationUpdater.Models
 {
 	internal class Settings
 	{
@@ -17,5 +17,6 @@ namespace Updater.Models
 		public string UpdateMode { get; set; }
 
 		public string UpdateDate { get; set; }
+		public string MessageDate { get; set; }
 	}
 }
