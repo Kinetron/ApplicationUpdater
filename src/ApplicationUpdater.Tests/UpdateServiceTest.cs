@@ -1,21 +1,25 @@
-﻿using System;
+﻿using DbAdaptor;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace ApplicationUpdater.Tests
 {
+	[TestClass]
 	public class UpdateServiceTest
 	{
-		[Test]
+		[TestMethod]
 		public void InstallUpdateTest()
 		{
 			UpdateService updateService = new UpdateService((text, color) =>
 			{
-
-			}, (progress) =>{} );
+				Console.WriteLine(text, color);
+			}, (progress) => { });
 
 			updateService.InstallUpdate(DateTime.Now, ".\\UpdateExample.zip");
-
-			Assert.Pass();
 		}
 	}
 }

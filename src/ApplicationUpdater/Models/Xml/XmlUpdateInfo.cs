@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 namespace ApplicationUpdater.Models.Xml
 {
@@ -9,6 +10,9 @@ namespace ApplicationUpdater.Models.Xml
 	[System.Xml.Serialization.XmlRoot("UpdateProgram")]
 	public class XmlUpdateInfo
 	{
+		[XmlElement("DbScripts")]
+		public XmlDbScripts DbScripts { get; set; }
+
 		[XmlElement("Folders")]
 		public XmlFolders Folders { get; set; }
 

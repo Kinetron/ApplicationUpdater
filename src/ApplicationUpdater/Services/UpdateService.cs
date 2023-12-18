@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Odbc;
 using System.Drawing;
 using System.IO;
@@ -8,8 +10,10 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using ApplicationUpdater.Contracts;
 using ApplicationUpdater.Models;
 using ApplicationUpdater.Models.Xml;
+using ApplicationUpdater.Services;
 using Updater.Enums;
 using Updater.Models;
 
@@ -385,7 +389,15 @@ namespace ApplicationUpdater
 				//Удаление папок
 				DeleteFoldersInUserProgram(info.DeletedFolders.DeletedFolders);
 
-				//	if (transaction != null) transaction.Commit();
+				//Установка обновлений базы данных.
+				IDbScriptExecutor dbScriptExecutor = new DbScriptExecutor(_printText);
+				var dbScripts = info.DbScripts.Scripts.Select(x=>new DbScriptDto()
+				{
+					Name = x.Name,
+					Version = x.Version,
+				}).ToList();
+
+				dbScriptExecutor.BeginUpdate(dbScripts);
 
 				//Обновление файла конфигурации
 				_printText("Обновление файла конфигурации...\r\n", Color.Green);

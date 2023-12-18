@@ -18,5 +18,15 @@ namespace ApplicationUpdater.Models
 
 		public string UpdateDate { get; set; }
 		public string MessageDate { get; set; }
+
+		/// <summary>
+		/// Строка подключения к базе данных.
+		/// </summary>
+		public string ConnectionString { get; set; }
+
+		/// <summary>
+		/// Последняя дата обновления базы данных.
+		/// </summary>
+		public string LastDbUpdateDate { get; set; }
 	}
 }
