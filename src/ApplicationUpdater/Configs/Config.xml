@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UpdateServers>
+    <MainServer>dskhdhk</MainServer>
+    <SecondServer>389</SecondServer>
+  </UpdateServers>
+  <ProxyServer>
+    <Server />
+    <Port>0</Port>
+    <UserName />
+    <Password />
+  </ProxyServer>
+  <ProxyUserName>2</ProxyUserName>
+  <ProxyPassword>2</ProxyPassword>
+  <ConnectionString>123</ConnectionString>
+  <LastDbUpdateDate>1</LastDbUpdateDate>
+  <!--Обновление из локальной папки. Пользователь может сам скачать обновления и установить.-->
+  <UpdateFromLocalFolder>false</UpdateFromLocalFolder>
+</Settings>

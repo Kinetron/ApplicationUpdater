@@ -12,6 +12,17 @@ namespace ApplicationUpdater.Tests
 	public class UpdateServiceTest
 	{
 		[TestMethod]
+		public void ReadSettings()
+		{
+			UpdateService updateService = new UpdateService((text, color) =>
+			{
+				Console.WriteLine(text, color);
+			}, (progress) => { });
+
+			updateService.ReadSettings("Config.xml");
+		}
+
+		[TestMethod]
 		public void InstallUpdateTest()
 		{
 			UpdateService updateService = new UpdateService((text, color) =>

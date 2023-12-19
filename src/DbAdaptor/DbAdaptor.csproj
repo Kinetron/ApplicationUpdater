@@ -4,14 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C183CA1D-4FDD-4FA0-97E5-BEBA381B813C}</ProjectGuid>
+    <ProjectGuid>{855D6B28-78F9-4047-B994-B557033E576D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ApplicationUpdater</RootNamespace>
-    <AssemblyName>ApplicationUpdater</AssemblyName>
+    <RootNamespace>DbAdaptor</RootNamespace>
+    <AssemblyName>DbAdaptor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +41,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -47,54 +51,41 @@
     <PlatformTarget>x86</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Odbc, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.Odbc.8.0.0\lib\net462\System.Data.Odbc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IDbScriptExecutor.cs" />
-    <Compile Include="Enums\ServerTypes.cs" />
-    <Compile Include="Models\DbScriptDto.cs" />
-    <Compile Include="Models\FileBackUp.cs" />
-    <Compile Include="Models\ProgramSettings\Proxy.cs" />
-    <Compile Include="Models\ProgramSettings\Settings.cs" />
-    <Compile Include="Models\ProgramSettings\UpdateServers.cs" />
-    <Compile Include="Models\UpdateItem.cs" />
-    <Compile Include="Models\Xml\XmlDbScript.cs" />
-    <Compile Include="Models\Xml\XmlDbScripts.cs" />
-    <Compile Include="Models\Xml\XmlDeletedFile.cs" />
-    <Compile Include="Models\Xml\XmlDeletedFiles.cs" />
-    <Compile Include="Models\Xml\XmlDeletedFolder.cs" />
-    <Compile Include="Models\Xml\XmlDeletedFolders.cs" />
-    <Compile Include="Models\Xml\XmlFile.cs" />
-    <Compile Include="Models\Xml\XmlFiles.cs" />
-    <Compile Include="Models\Xml\XmlFolder.cs" />
-    <Compile Include="Models\Xml\XmlFolders.cs" />
-    <Compile Include="Models\Xml\XmlUpdateInfo.cs" />
+    <Compile Include="MsAccessAdaptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CustomFileCopier.cs" />
-    <Compile Include="Services\DbScriptExecutor.cs" />
-    <Compile Include="Services\UpdateService.cs" />
-    <Compile Include="Services\XmlEditor.cs" />
-    <Compile Include="Services\ZipExtractor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DbAdaptor\DbAdaptor.csproj">
-      <Project>{855d6b28-78f9-4047-b994-b557033e576d}</Project>
-      <Name>DbAdaptor</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="Configs\Config.xml" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

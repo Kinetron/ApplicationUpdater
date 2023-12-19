@@ -76,11 +76,16 @@ namespace ApplicationUpdater
 		/// <summary>
 		/// Читает настройки.
 		/// </summary>
-		public void ReadSettings()
+		public void ReadSettings(string filePath)
 		{
-			//if UpdateMode == 1) activeServer = ServerTypes.Local;
-			_settings = new Settings();
-			if (!string.IsNullOrEmpty(_settings.ProxyServer))
+			using (var stream = System.IO.File.OpenRead(filePath))
+			{
+				var serializer = new XmlSerializer(typeof(Settings));
+				_settings =  serializer.Deserialize(stream) as Settings;
+			}
+			
+			//Задан прокси сервер.
+			if (!string.IsNullOrEmpty(_settings.ProxyServer.Server))
 			{
 				AddProxy();
 				_useProxy = true;
@@ -350,6 +355,21 @@ namespace ApplicationUpdater
 		/// <param name="zipFile"></param>
 		public void InstallUpdate(DateTime zipDate, string zipFile)
 		{
+			Settings settings = new Settings();
+			settings.UpdateServers.MainServer = "dskhdhk";
+			settings.UpdateServers.SecondServer = "389";
+			settings.ConnectionString = "123";
+			settings.LastDbUpdateDate = "1";
+			settings.ProxyPassword = "2";
+			settings.ProxyUserName = "2";
+
+			using (var writer = new System.IO.StreamWriter("123"))
+			{
+				var serializer = new XmlSerializer(typeof(Settings));
+				serializer.Serialize(writer, settings);
+				writer.Flush();
+			}
+
 			//.Sleep(100);
 			//if (!fileCompleted) return;
 
